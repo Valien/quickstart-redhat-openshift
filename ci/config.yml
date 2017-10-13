@@ -1,7 +1,7 @@
 global:
   marketplace-ami: false
-  owner: quickstart-eng@amazon.com
-  qsname: quickstart-redhat-openshift
+  owner: allen.vailliencourt@forty8fiftylabs.com
+  qsname: f8f-quickstart-redhat-openshift
   regions:
     - ap-northeast-1
     - ap-northeast-2
@@ -18,7 +18,7 @@ global:
     - us-west-1
     - us-west-2
   reporting: true
-  s3bucket: tonynv-redhat-openshift
+  s3bucket: f8f-quickstart-openshift-allenv
 tests:
   openshift:
     parameter_input: openshift-creds.json

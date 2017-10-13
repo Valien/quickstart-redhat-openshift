@@ -12,10 +12,8 @@
                         "VPCCIDR",
                         "PrivateSubnet1ID",
                         "PrivateSubnet2ID",
-                        "PrivateSubnet3ID",
                         "PublicSubnet1ID",
                         "PublicSubnet2ID",
-                        "PublicSubnet3ID",
                         "RemoteAccessCIDR"
                     ]
                 },
@@ -79,17 +77,11 @@
                 "PrivateSubnet2ID": {
                     "default": "Private Subnet 2 ID"
                 },
-                "PrivateSubnet3ID": {
-                    "default": "Private Subnet 3 ID"
-                },
                 "PublicSubnet1ID": {
                     "default": "Public Subnet 1 ID"
                 },
                 "PublicSubnet2ID": {
                     "default": "Public Subnet 2 ID"
-                },
-                "PublicSubnet3ID": {
-                    "default": "Public Subnet 3 ID"
                 },
                 "QSS3BucketName": {
                     "default": "Quick Start S3 Bucket Name"
@@ -155,20 +147,12 @@
             "Description": "ID of private subnet 2 in Availability Zone 2 for the Workload (e.g., subnet-b1f432cd)",
             "Type": "AWS::EC2::Subnet::Id"
         },
-        "PrivateSubnet3ID": {
-            "Description": "ID of private subnet 2 in Availability Zone 3 for the Workload (e.g., subnet-b1f4a2cd)",
-            "Type": "AWS::EC2::Subnet::Id"
-        },
         "PublicSubnet1ID": {
             "Description": "ID of public subnet 1 in Availability Zone 1 for the ELB load balancer (e.g., subnet-9bc642ac)",
             "Type": "AWS::EC2::Subnet::Id"
         },
         "PublicSubnet2ID": {
             "Description": "ID of public subnet 2 in Availability Zone 2 for the ELB load balancer (e.g., subnet-e3246d8e)",
-            "Type": "AWS::EC2::Subnet::Id"
-        },
-        "PublicSubnet3ID": {
-            "Description": "ID of public subnet 2 in Availability Zone 3 for the ELB load balancer (e.g., subnet-e324ad8e)",
             "Type": "AWS::EC2::Subnet::Id"
         },
         "QSS3BucketName": {
@@ -284,21 +268,22 @@
             "Type": "String"
         },
         "NumberOfMaster": {
-            "Default": "3",
+            "Default": "2",
             "Description": "This Deployment requires 3 OpenShift Master instances",
             "Type": "Number",
-            "AllowedValues": ["3"]
+            "AllowedValues": ["2"]
         },
         "NumberOfEtcd": {
-            "Default": "3",
+            "Default": "1",
             "Description": "This Deployment requires 3 OpenShift Etcd instances",
             "Type": "Number",
-            "AllowedValues": ["3"]
+            "AllowedValues": ["1"]
         },
         "NumberOfNodes": {
-            "Default": "3",
+            "Default": "2",
             "Description": "The desired capacity for the OpenShift node instances",
-            "Type": "Number"
+            "Type": "Number",
+            "AllowedValues": ["2"]
         }
     },
     "Rules": {
@@ -576,9 +561,6 @@
                     },
                     {
                         "Ref": "PrivateSubnet2ID"
-                    },
-                    {
-                        "Ref": "PrivateSubnet3ID"
                     }
                 ]
             }
@@ -607,9 +589,6 @@
                     },
                     {
                         "Ref": "PrivateSubnet2ID"
-                    },
-                    {
-                        "Ref": "PrivateSubnet3ID"
                     }
                 ]
             }
@@ -641,9 +620,6 @@
                     },
                     {
                         "Ref": "PrivateSubnet2ID"
-                    },
-                    {
-                        "Ref": "PrivateSubnet3ID"
                     }
                 ]
             }
@@ -1202,9 +1178,6 @@
                         "Ref": "PublicSubnet1ID"
                     }, {
                         "Ref": "PublicSubnet2ID"
-                    },
-                    {
-                        "Ref": "PublicSubnet3ID"
                     }
                 ],
                 "SecurityGroups": [{
@@ -1254,11 +1227,8 @@
                 "Scheme": "internal",
                 "Subnets": [{
                         "Ref": "PrivateSubnet1ID"
-                    }, {
+                    },{
                         "Ref": "PrivateSubnet2ID"
-                    },
-                    {
-                        "Ref": "PrivateSubnet3ID"
                     }
                 ],
                 "SecurityGroups": [{
@@ -1306,9 +1276,6 @@
                     },
                     {
                         "Ref": "PrivateSubnet2ID"
-                    },
-                    {
-                        "Ref": "PrivateSubnet3ID"
                     }
                 ],
                 "Scheme": "internal",

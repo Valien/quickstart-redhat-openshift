@@ -12,10 +12,8 @@
                         "VPCCIDR",
                         "PrivateSubnet1CIDR",
                         "PrivateSubnet2CIDR",
-                        "PrivateSubnet3CIDR",
                         "PublicSubnet1CIDR",
                         "PublicSubnet2CIDR",
-                        "PublicSubnet3CIDR",
                         "RemoteAccessCIDR"
                     ]
                 },
@@ -79,17 +77,11 @@
                 "PrivateSubnet2ID": {
                     "default": "Private Subnet 2 ID"
                 },
-                "PrivateSubnet3ID": {
-                    "default": "Private Subnet 3 ID"
-                },
                 "PublicSubnet1ID": {
                     "default": "Public Subnet 1 ID"
                 },
                 "PublicSubnet2ID": {
                     "default": "Public Subnet 2 ID"
-                },
-                "PublicSubnet3ID": {
-                    "default": "Public Subnet 3 ID"
                 },
                 "QSS3BucketName": {
                     "default": "Quick Start S3 Bucket Name"
@@ -165,13 +157,6 @@
             "Description": "CIDR block for private subnet 2 located in Availability Zone 2",
             "Type": "String"
         },
-        "PrivateSubnet3CIDR": {
-            "AllowedPattern": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(1[6-9]|2[0-8]))$",
-            "ConstraintDescription": "CIDR block parameter must be in the form x.x.x.x/16-28",
-            "Default": "10.0.64.0/19",
-            "Description": "CIDR block for private subnet 2 located in Availability Zone 3",
-            "Type": "String"
-        },
         "PublicSubnet1CIDR": {
             "AllowedPattern": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(1[6-9]|2[0-8]))$",
             "ConstraintDescription": "CIDR block parameter must be in the form x.x.x.x/16-28",
@@ -184,13 +169,6 @@
             "ConstraintDescription": "CIDR block parameter must be in the form x.x.x.x/16-28",
             "Default": "10.0.144.0/20",
             "Description": "CIDR block for the public (DMZ) subnet 2 located in Availability Zone 2",
-            "Type": "String"
-        },
-        "PublicSubnet3CIDR": {
-            "AllowedPattern": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(1[6-9]|2[0-8]))$",
-            "ConstraintDescription": "CIDR block parameter must be in the form x.x.x.x/16-28",
-            "Default": "10.0.160.0/20",
-            "Description": "CIDR block for the public (DMZ) subnet 2 located in Availability Zone 3",
             "Type": "String"
         },
         "QSS3BucketName": {
@@ -302,21 +280,22 @@
             "Type": "String"
         },
         "NumberOfMaster": {
-            "Default": "3",
-            "Description": "This Deployment requires 3 OpenShift Master instances",
+            "Default": "2",
+            "Description": "This Deployment requires 2 OpenShift Master instances",
             "Type": "Number",
-            "AllowedValues": ["3"]
+            "AllowedValues": ["2"]
         },
         "NumberOfEtcd": {
-            "Default": "3",
-            "Description": "This Deployment requires 3 OpenShift Etcd instances",
+            "Default": "1",
+            "Description": "This Deployment requires 1 OpenShift Etcd instances",
             "Type": "Number",
-            "AllowedValues": ["3"]
+            "AllowedValues": ["1"]
         },
         "NumberOfNodes": {
-            "Default": "3",
+            "Default": "2",
             "Description": "The desired capacity for the OpenShift node instances",
-            "Type": "Number"
+            "Type": "Number",
+            "AllowedValues": ["1"]
         }
     },
     "Resources": {
@@ -338,24 +317,18 @@
                     "KeyPairName": {
                         "Ref": "KeyPairName"
                     },
-                    "NumberOfAZs": "3",
+                    "NumberOfAZs": "2",
                     "PrivateSubnet1ACIDR": {
                         "Ref": "PrivateSubnet1CIDR"
                     },
                     "PrivateSubnet2ACIDR": {
                         "Ref": "PrivateSubnet2CIDR"
                     },
-                    "PrivateSubnet3ACIDR": {
-                        "Ref": "PrivateSubnet3CIDR"
-                    },
                     "PublicSubnet1CIDR": {
                         "Ref": "PublicSubnet1CIDR"
                     },
                     "PublicSubnet2CIDR": {
                         "Ref": "PublicSubnet2CIDR"
-                    },
-                    "PublicSubnet3CIDR": {
-                        "Ref": "PublicSubnet3CIDR"
                     },
                     "VPCCIDR": {
                         "Ref": "VPCCIDR"
@@ -391,12 +364,6 @@
                             "Outputs.PrivateSubnet2AID"
                         ]
                     },
-                    "PrivateSubnet3ID": {
-                        "Fn::GetAtt": [
-                            "VPCStack",
-                            "Outputs.PrivateSubnet3AID"
-                        ]
-                    },
                     "PublicSubnet1ID": {
                         "Fn::GetAtt": [
                             "VPCStack",
@@ -407,12 +374,6 @@
                         "Fn::GetAtt": [
                             "VPCStack",
                             "Outputs.PublicSubnet2ID"
-                        ]
-                    },
-                    "PublicSubnet3ID": {
-                        "Fn::GetAtt": [
-                            "VPCStack",
-                            "Outputs.PublicSubnet3ID"
                         ]
                     },
                     "RemoteAccessCIDR": {
