@@ -547,7 +547,7 @@
                 "MaxSize": {
                     "Ref": "NumberOfMaster"
                 },
-                "MinSize": "2",
+                "MinSize": "1",
                 "LaunchConfigurationName": {
                     "Ref": "OpenShiftMasterASLaunchConfig"
                 },
@@ -575,7 +575,7 @@
                 "MaxSize": {
                     "Ref": "NumberOfEtcd"
                 },
-                "MinSize": "2",
+                "MinSize": "1",
                 "LaunchConfigurationName": {
                     "Ref": "OpenShiftEtcdLaunchConfig"
                 },
@@ -606,7 +606,7 @@
                 "MaxSize": {
                     "Ref": "NumberOfNodes"
                 },
-                "MinSize": "2",
+                "MinSize": "1",
                 "LaunchConfigurationName": {
                     "Ref": "OpenShiftNodesLaunchConfig"
                 },
