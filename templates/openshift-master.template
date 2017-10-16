@@ -295,7 +295,7 @@
             "Default": "2",
             "Description": "The desired capacity for the OpenShift node instances",
             "Type": "Number",
-            "AllowedValues": ["1"]
+            "AllowedValues": ["2"]
         }
     },
     "Resources": {
