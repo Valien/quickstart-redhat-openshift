@@ -136,7 +136,7 @@
     },
     "Parameters": {
         "AvailabilityZones": {
-            "Description": "List of Availability Zones to use for the subnets in the VPC. Three Availability Zones are used for this deployment, and the logical order of your selections is preserved.",
+            "Description": "List of Availability Zones to use for the subnets in the VPC. Two Availability Zones are used for this deployment, and the logical order of your selections is preserved.",
             "Type": "List<AWS::EC2::AvailabilityZone::Name>"
         },
         "KeyPairName": {
@@ -226,7 +226,7 @@
             "Type": "String"
         },
         "MasterInstanceType": {
-            "Default": "m4.xlarge",
+            "Default": "t2.large",
             "AllowedValues": [
                 "t2.large",
                 "m4.xlarge",
@@ -244,7 +244,7 @@
             "Type": "String"
         },
         "EtcdInstanceType": {
-            "Default": "m4.xlarge",
+            "Default": "t2.large",
             "AllowedValues": [
                 "t2.large",
                 "m4.xlarge",
@@ -262,7 +262,7 @@
             "Type": "String"
         },
         "NodesInstanceType": {
-            "Default": "m4.xlarge",
+            "Default": "t2.large",
             "AllowedValues": [
                 "t2.large",
                 "m4.xlarge",
@@ -280,22 +280,34 @@
             "Type": "String"
         },
         "NumberOfMaster": {
-            "Default": "2",
-            "Description": "This Deployment requires 2 OpenShift Master instances",
+            "Default": "1",
+            "Description": "This Deployment requires 1 OpenShift Master instances",
             "Type": "Number",
-            "AllowedValues": ["2"]
+            "AllowedValues": [
+                "1",
+                "2",
+                "3"
+            ]
         },
         "NumberOfEtcd": {
             "Default": "1",
             "Description": "This Deployment requires 1 OpenShift Etcd instances",
             "Type": "Number",
-            "AllowedValues": ["1"]
+            "AllowedValues": [
+                "1",
+                "2",
+                "3"
+            ]
         },
         "NumberOfNodes": {
             "Default": "2",
             "Description": "The desired capacity for the OpenShift node instances",
             "Type": "Number",
-            "AllowedValues": ["2"]
+            "AllowedValues": [
+                "1",
+                "2",
+                "3"
+            ]
         }
     },
     "Resources": {
