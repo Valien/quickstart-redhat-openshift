@@ -283,31 +283,19 @@
             "Default": "1",
             "Description": "This Deployment requires 1 OpenShift Master instances",
             "Type": "Number",
-            "AllowedValues": [
-                "1",
-                "2",
-                "3"
-            ]
+            "AllowedValues": ["1"]
         },
         "NumberOfEtcd": {
             "Default": "1",
             "Description": "This Deployment requires 1 OpenShift Etcd instances",
             "Type": "Number",
-            "AllowedValues": [
-                "1",
-                "2",
-                "3"
-            ]
+            "AllowedValues": ["1"]
         },
         "NumberOfNodes": {
             "Default": "2",
             "Description": "The desired capacity for the OpenShift node instances",
             "Type": "Number",
-            "AllowedValues": [
-                "1",
-                "2",
-                "3"
-            ]
+            "AllowedValues": ["2"]
         }
     },
     "Resources": {
