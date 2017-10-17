@@ -268,22 +268,26 @@
             "Type": "String"
         },
         "NumberOfMaster": {
-            "Default": "1",
-            "Description": "This Deployment requires 1-3 OpenShift Master instances",
+            "Default": "2",
+            "Description": "This Deployment requires 2 OpenShift Master instances",
             "Type": "Number",
-            "AllowedValues": ["1"]
+            "AllowedValues": ["2"]
         },
         "NumberOfEtcd": {
             "Default": "1",
-            "Description": "This Deployment requires 1-3 OpenShift Etcd instances",
+            "Description": "This Deployment requires 1 OpenShift Etcd instances",
             "Type": "Number",
             "AllowedValues": ["1"]
         },
         "NumberOfNodes": {
-            "Default": "2",
+            "Default": "1",
             "Description": "The desired capacity for the OpenShift node instances",
             "Type": "Number",
-            "AllowedValues": ["2"]
+            "AllowedValues": [
+                "1",
+                "2",
+                "3"
+            ]
         }
     },
     "Rules": {
